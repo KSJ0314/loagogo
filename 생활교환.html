@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            border: 1px solid black;
+            padding: 5px;
+	        border-spacing: 0 10px;
+        }
+        th{
+            padding: 5px 10px;
+        }
+        input{
+            width: 100px;
+            height: 25px;
+        }
+        button{
+            padding: 5px 10px;
+            background-color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #resultBox{
+            color: red;
+        }
+        #resultB{
+            color: green;
+        }
+        #resultC{
+            color: gray;
+        }
+        .result{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>희귀</th>
+            <td><input type="number" class="A"></td>
+        </tr>
+        <tr>
+            <th>고급</th>
+            <td><input type="number" class="B"></td>
+        </tr>
+        <tr>
+            <th>일반</th>
+            <td><input type="number" class="C"></td>
+        </tr>
+    </table>
+    <button onclick="cal()">변환</button>
+
+    <p class="result">
+        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
+        고급 재료를 <span class="resultB" id="resultB"></span>개 교환하고 <br/>
+        일반 재료를 <span class="resultC" id="resultC"></span>개 교환하면 됩니다.
+    </p>
+
+
+    <script>
+        function cal(){
+            var a = document.querySelector('.A').value;
+            var b = document.querySelector('.B').value;
+            var c = document.querySelector('.C').value;
+            const resultBox = Math.floor(((a*10+b*1.6+c*0.8) / 470.8));
+
+            var resultA = a - (resultBox * 33);
+            var resultB = b - (resultBox * 45);
+            var resultC = c - (resultBox * 86);
+
+            if (resultA < 0){
+                resultA = 0;
+            }
+            if (resultB < 0){
+                resultB = 0;
+            }
+            if (resultC < 0){
+                resultC = 0;
+            }
+            resultA = Math.floor(resultA / 100)*100;
+            resultB = Math.floor(resultB / 100)*2;
+            resultC = Math.floor(resultC / 100);
+
+            document.querySelector('.result').style.display = 'block';
+            document.querySelector('.resultBox').innerHTML = resultBox;
+            document.querySelector('.resultB').innerHTML = resultB;
+            document.querySelector('.resultC').innerHTML = resultC;
+        }
+    </script>
+</body>
+</html>

@@ -39,9 +39,13 @@
         #resultC{
             color: gray;
         }
-        .result{
+        #resultGold{
+            color: rgb(224, 168, 0);
+        }
+        .result, .result2{
             display: none;
         }
+
     </style>
 </head>
 <body>
@@ -58,44 +62,60 @@
             <th>일반</th>
             <td><input type="number" class="C"></td>
         </tr>
+        <tr>
+            <th>제작비용</th>
+            <td><input type="number" class="gold"></td>
+        </tr>
     </table>
     <button onclick="cal()">변환</button>
 
     <p class="result">
         총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
+        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
         고급 재료를 <span class="resultB" id="resultB"></span>개 교환하고 <br/>
         일반 재료를 <span class="resultC" id="resultC"></span>개 교환하면 됩니다.
+    </p>
+    <p class="result2">
+        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
+        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
+        희귀 재료가 더 많아서 교환할 재료는 없습니다.
     </p>
 
 
     <script>
         function cal(){
+            document.querySelector('.result').style.display = 'none';
+            document.querySelector('.result2').style.display = 'none';
             var a = document.querySelector('.A').value;
             var b = document.querySelector('.B').value;
             var c = document.querySelector('.C').value;
+            var gold = document.querySelector('.gold').value;
             const resultBox = Math.floor(((a*10+b*1.6+c*0.8) / 470.8));
+            const resultGold = resultBox * gold;
 
             var resultA = a - (resultBox * 33);
             var resultB = b - (resultBox * 45);
             var resultC = c - (resultBox * 86);
 
+            var result;
             if (resultA < 0){
                 resultA = 0;
             }
-            if (resultB < 0){
-                resultB = 0;
+            if (resultB < 0 || resultC < 0){
+                result = document.querySelector('.result2');
+            } else{
+                result = document.querySelector('.result');
             }
-            if (resultC < 0){
-                resultC = 0;
-            }
+            result.style.display = 'block';
+
             resultA = Math.floor(resultA / 100)*100;
             resultB = Math.floor(resultB / 100)*2;
             resultC = Math.floor(resultC / 100);
 
-            document.querySelector('.result').style.display = 'block';
-            document.querySelector('.resultBox').innerHTML = resultBox;
-            document.querySelector('.resultB').innerHTML = resultB;
-            document.querySelector('.resultC').innerHTML = resultC;
+            result.querySelector('.resultBox').innerHTML = resultBox;
+            result.querySelector('.resultGold').innerHTML = resultGold + "G";
+            result.querySelector('.resultB').innerHTML = resultB;
+            result.querySelector('.resultC').innerHTML = resultC;
         }
     </script>
 </body>

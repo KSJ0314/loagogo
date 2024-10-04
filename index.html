@@ -78,7 +78,7 @@
     <p class="result2">
         총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
         제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
-        희귀 재료가 더 많아서 교환할 재료는 없습니다.
+        교환할 재료는 없습니다.
     </p>
 
 
@@ -101,16 +101,23 @@
             if (resultA < 0){
                 resultA = 0;
             }
-            if (resultB < 0 || resultC < 0){
+            if (resultB < 0){
+                resultB = 0;
+            }
+            if (resultC < 0){
+                resultC = 0;
+            }
+
+            resultA = Math.floor(resultA / 100)*100;
+            resultB = Math.floor(resultB / 100)*2;
+            resultC = Math.floor(resultC / 100);
+
+            if (resultB === 0 || resultC === 0){
                 result = document.querySelector('.result2');
             } else{
                 result = document.querySelector('.result');
             }
             result.style.display = 'block';
-
-            resultA = Math.floor(resultA / 100)*100;
-            resultB = Math.floor(resultB / 100)*2;
-            resultC = Math.floor(resultC / 100);
 
             result.querySelector('.resultBox').innerHTML = resultBox;
             result.querySelector('.resultGold').innerHTML = resultGold + "G";

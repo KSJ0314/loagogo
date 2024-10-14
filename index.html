@@ -5,12 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LostArk 생활의 가루 계산기</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body{
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+        .mode{
+            height: 10vh;
+            margin: 10vh 0 3vh;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .mode div{
+            width: 10vh;
+            height: 10vh;
+            cursor: pointer;
+            border-radius: 2vh;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
+        .mode2{
+            height: 7vh;
+            margin: 0 0 3vh;
+            display: none;
+            justify-content: space-evenly;
+        }
+        .mode2 div{
+            width: 7vh;
+            height: 7vh;
+            cursor: pointer;
+            border-radius: 1.5vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img div{
+            width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center center;
+        }
+        #abidos{
+            background: linear-gradient(135deg, #112739, #113d5d);
+            outline: 3px solid #dd25ff;
+        }
+        #abidos div{
+            width: 100% !important;
+            height: 100% !important;
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_86.png);
+        }
+        #oreha{
+            background: linear-gradient(135deg, #2e123c, #480d5d);
+        }
+        #oreha div{
+            background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_11_29.png);
+        }
+        .mode2 .img > div{
+            background: linear-gradient(135deg, #112739, #113d5d);
+        }
+        .mode2 .img:first-child > div{
+            outline: 3px solid #dd25ff;
+        }
+        #archeology div{
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/lifelevel/lifelevel_02_55.png);
+        }
+        #hunting div{
+            background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_67.png);
+        }
+        #fishing div{
+            background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png);
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        form .img > div{
+            width: 5vh;
+            height: 5vh;
+            border-radius: 1vh;
+        }
+        .img #a{
+            background: linear-gradient(135deg, #112739, #113d5d);
+        }
+        .img #b{
+            background: linear-gradient(135deg, #1e2d0b, #304911);
+        }
+        .img #c{
+            background: linear-gradient(135deg, #313131, #585858);
+        }
+        .img #g{
+            background: linear-gradient(135deg, #313131, #585858);
+        }
+        .img #a div{
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/lifelevel/lifelevel_02_55.png);
+        }
+        .img #b div{
+            background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_4.png);
+        }
+        .img #c div{
+            background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_3.png);
+        }
+        .img #g div{
+            background-image: url(https://loatool.taeu.kr/img/item/gold.png);
+        }
+        
         table{
             border: 1px solid black;
             padding: 5px;
@@ -18,6 +128,8 @@
         }
         th{
             padding: 5px 10px;
+            display: flex;
+            justify-content: center;
         }
         input{
             width: 100px;
@@ -28,7 +140,7 @@
             background-color: white;
             border: 1px solid black;
             cursor: pointer;
-            margin: 10px;
+            margin: 3vh 0;
         }
         #resultBox{
             color: red;
@@ -45,35 +157,89 @@
         .result, .result2{
             display: none;
         }
-
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>희귀</th>
-            <td><input type="number" class="A"></td>
-        </tr>
-        <tr>
-            <th>고급</th>
-            <td><input type="number" class="B"></td>
-        </tr>
-        <tr>
-            <th>일반</th>
-            <td><input type="number" class="C"></td>
-        </tr>
-        <tr>
-            <th>제작비용</th>
-            <td><input type="number" class="gold"></td>
-        </tr>
-    </table>
-    <button onclick="cal()">변환</button>
+    <div class="mode">
+        <div class="img" onclick="modeChange(0)">
+            <div id="abidos">
+                <div></div>
+            </div>
+        </div>
+        <div class="img" onclick="modeChange(1)">
+            <div id="oreha">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class="mode2">
+        <div class="img" onclick="mode2Change(0)">
+            <div id="archeology">
+                <div></div>
+            </div>
+        </div>
+        <div class="img" onclick="mode2Change(1)">
+            <div id="hunting">
+                <div></div>
+            </div>
+        </div>
+        <div class="img" onclick="mode2Change(2)">
+            <div id="fishing">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <form id="calForm">
+        <table>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div id="a">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="A" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div id="b">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="B" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div id="c">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="C" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div id="g">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="gold"></td>
+            </tr>
+        </table>
+        <button type="submit">변환</button>
+    </form>
 
     <p class="result">
         총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
         제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
-        고급 재료를 <span class="resultB" id="resultB"></span>개 교환하고 <br/>
-        일반 재료를 <span class="resultC" id="resultC"></span>개 교환하면 됩니다.
+        고급 재료를 <span class="resultB" id="resultB"></span>회 교환하고 <br/>
+        일반 재료를 <span class="resultC" id="resultC"></span>회 교환하면 됩니다.
     </p>
     <p class="result2">
         총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
@@ -83,47 +249,156 @@
 
 
     <script>
+        var mode = 0;
+        var mode2 = 0;
+        const bgUrl = [
+            'https://cdn-lostark.game.onstove.com/efui_iconatlas/lifelevel/lifelevel_02_55.png',    // 고고학 아비도스
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_11.png',    // 고고학 오레하
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_4.png',  // 고고학 고급
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_3.png',   // 고고학 일반
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_67.png', // 수렵 오레하
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_2_196.png',// 수렵 고급
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_2_192.png',// 수렵 일반
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png', // 낚시 오레하
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_4_49.png', // 낚시 고급
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_1_142.png' // 낚시 일반
+        ];
+
+        function init(){
+            document.querySelector('.result').style.display = 'none';
+            document.querySelector('.result2').style.display = 'none';
+            document.querySelector('.A').value = '';
+            document.querySelector('.B').value = '';
+            document.querySelector('.C').value = '';
+            document.querySelector('.gold').value = '';
+        }
+
+        function modeChange(m){
+            init();
+
+            mode = m;
+            if (mode){
+                document.querySelector('.mode2').style.display = 'flex';
+            } else{
+                document.querySelector('.mode2').style.display = 'none';
+                mode2Change(0);
+            }
+
+            const modeChild = document.querySelector('.mode').children;
+            for (let i = 0; i < modeChild.length; i++) {
+                modeChild[i].children[0].style.outline = 'none';
+            }
+            modeChild[mode].children[0].style.outline = '3px solid #dd25ff';
+
+            const a = document.querySelector('#a div');
+            a.style.backgroundImage  = `url(${bgUrl[mode]})`;
+        }
+        function mode2Change(m){
+            init();
+
+            mode2 = m;
+            const modeChild = document.querySelector('.mode2').children;
+            for (let i = 0; i < modeChild.length; i++) {
+                modeChild[i].children[0].style.outline = 'none';
+            }
+            modeChild[mode2].children[0].style.outline = '3px solid #dd25ff';
+
+            const a = document.querySelector('#a div');
+            const b = document.querySelector('#b div');
+            const c = document.querySelector('#c div');
+
+            if (mode2 === 0){
+                a.style.backgroundImage  = `url(${bgUrl[1]})`;
+                b.style.backgroundImage  = `url(${bgUrl[2]})`;
+                c.style.backgroundImage  = `url(${bgUrl[3]})`;
+            } else if (mode2 === 1){
+                a.style.backgroundImage  = `url(${bgUrl[4]})`;
+                b.style.backgroundImage  = `url(${bgUrl[5]})`;
+                c.style.backgroundImage  = `url(${bgUrl[6]})`;
+            } else {
+                a.style.backgroundImage  = `url(${bgUrl[7]})`;
+                b.style.backgroundImage  = `url(${bgUrl[8]})`;
+                c.style.backgroundImage  = `url(${bgUrl[9]})`;
+            }
+        }
+
         function cal(){
             document.querySelector('.result').style.display = 'none';
             document.querySelector('.result2').style.display = 'none';
-            var a = document.querySelector('.A').value;
-            var b = document.querySelector('.B').value;
-            var c = document.querySelector('.C').value;
-            var gold = document.querySelector('.gold').value;
-            const resultBox = Math.floor(((a*10+b*1.6+c*0.8) / 470.8));
+                
+            const a = document.querySelector('.A').valueAsNumber;
+            const b = document.querySelector('.B').valueAsNumber;
+            const c = document.querySelector('.C').valueAsNumber;
+            const gold = document.querySelector('.gold').value;
+
+            if (!a || !b || !c){
+                return;
+            }
+
+            var aMaterial;
+            var bMaterial;
+            var cMaterial;
+            if (mode === 0){
+                aMaterial = 33;
+                bMaterial = 45;
+                cMaterial = 86;
+            } else {
+                if (mode2 === 0){
+                    aMaterial = 52;
+                    bMaterial = 51;
+                    cMaterial = 107;
+                } else {
+                    aMaterial = 52;
+                    bMaterial = 69;
+                    cMaterial = 142;
+                }
+            }
+
+            const boxToPowder = Math.floor((a*10 + b*1.6 + c*0.8) / (aMaterial*10 + bMaterial*1.6 + cMaterial*0.8));
+            const boxToA = Math.floor(a / aMaterial);
+            const boxToB = Math.floor(b / bMaterial);
+            const boxToC = Math.floor(c / cMaterial);
+            var resultBox = Math.min(boxToPowder, boxToB, boxToC);
             const resultGold = resultBox * gold;
-
-            var resultA = a - (resultBox * 33);
-            var resultB = b - (resultBox * 45);
-            var resultC = c - (resultBox * 86);
-
+            const aSmall = boxToA < resultBox;
+            
             var result;
-            if (resultA < 0){
-                resultA = 0;
-            }
-            if (resultB < 0){
-                resultB = 0;
-            }
-            if (resultC < 0){
-                resultC = 0;
-            }
-
-            resultA = Math.floor(resultA / 100)*100;
-            resultB = Math.floor(resultB / 100)*2;
-            resultC = Math.floor(resultC / 100);
-
-            if (resultB === 0 || resultC === 0){
-                result = document.querySelector('.result2');
-            } else{
+            var resultB, resultC;
+            if (aSmall) {
                 result = document.querySelector('.result');
+                const needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
+                
+                if (resultBox === boxToPowder){
+                    resultB = Math.floor((b - resultBox*bMaterial) / 50);
+                    resultC = Math.floor((c - resultBox*cMaterial) / 100);
+                    resultBox = Math.min(Math.floor((Math.floor(((resultB+resultC)*80)/100)*10 + a) / 33), resultBox);
+                } else if (resultBox === boxToB){
+                    resultB = 0;
+                    resultC = Math.ceil(needPowder / 80);
+                } else if (resultBox === boxToC){
+                    resultB = Math.ceil(needPowder / 80);
+                    resultC = 0;
+                }
+            } else{
+                result = document.querySelector('.result2');
             }
-            result.style.display = 'block';
-
+            
             result.querySelector('.resultBox').innerHTML = resultBox;
             result.querySelector('.resultGold').innerHTML = resultGold + "G";
-            result.querySelector('.resultB').innerHTML = resultB;
-            result.querySelector('.resultC').innerHTML = resultC;
+
+            if (aSmall){
+                result.querySelector('.resultB').innerHTML = resultB;
+                result.querySelector('.resultC').innerHTML = resultC;
+            }
+
+            result.style.display = 'block';
         }
+        const form = document.getElementById('calForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            cal();
+        });
     </script>
 </body>
 </html>

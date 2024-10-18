@@ -16,11 +16,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             overflow: hidden;
+            background-color: lightblue;
         }
         .mode{
             height: 10vh;
-            margin: 10vh 0 3vh;
+            margin-top: 3vh;
+            margin-bottom: 3vh;
             display: flex;
             justify-content: space-evenly;
         }
@@ -57,19 +60,19 @@
             background-size: cover;
             background-position: center center;
         }
-        #abidos{
+        .abidos{
             background: linear-gradient(135deg, #112739, #113d5d);
             outline: 3px solid #dd25ff;
         }
-        #abidos div{
+        .abidos div{
             width: 100% !important;
             height: 100% !important;
             background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_86.png);
         }
-        #oreha{
+        .oreha{
             background: linear-gradient(135deg, #2e123c, #480d5d);
         }
-        #oreha div{
+        .oreha div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_11_29.png);
         }
         .mode2 .img > div{
@@ -78,176 +81,281 @@
         .mode2 .img:first-child > div{
             outline: 3px solid #dd25ff;
         }
-        #archeology div{
+        .archeology div{
             background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/lifelevel/lifelevel_02_55.png);
         }
-        #hunting div{
+        .hunting div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_67.png);
         }
-        #fishing div{
+        .fishing div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png);
         }
 
         form{
             display: flex;
             flex-direction: column;
+            margin-right: 2vh;
         }
         form .img > div{
             width: 5vh;
             height: 5vh;
             border-radius: 1vh;
         }
-        .img #a{
+        .img .a{
             background: linear-gradient(135deg, #112739, #113d5d);
         }
-        .img #b{
+        .img .b{
             background: linear-gradient(135deg, #1e2d0b, #304911);
         }
-        .img #c{
+        .img .c{
             background: linear-gradient(135deg, #313131, #585858);
         }
-        .img #g{
+        .img .g{
             background: linear-gradient(135deg, #313131, #585858);
         }
-        .img #a div{
+        .img .a div{
             background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/lifelevel/lifelevel_02_55.png);
         }
-        .img #b div{
+        .img .b div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_4.png);
         }
-        .img #c div{
+        .img .c div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_3.png);
         }
-        .img #g div{
+        .img .g div{
             background-image: url(https://loatool.taeu.kr/img/item/gold.png);
+        }
+        .img .resultBoxicon{
+            background: linear-gradient(135deg, #112739, #113d5d);
+        }
+        .img .resultBoxicon div{
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png);
+        }
+        .img .powder{
+            background: linear-gradient(135deg, #232323, #575757);
+        }
+        .img .powder div{
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_10_40.png);
         }
         
         table{
             border: 1px solid black;
-            padding: 5px;
+            border-radius: 1vh;
+            padding: 1.5vh;
 	        border-spacing: 0 10px;
+            width: 25vh;
         }
         th{
-            padding: 5px 10px;
-            display: flex;
             justify-content: center;
         }
         input{
-            width: 100px;
-            height: 25px;
+            width: 15.5vh;
+            height: 4vh;
+            margin-left: 1.5vh;
         }
         button{
             padding: 5px 10px;
             background-color: white;
             border: 1px solid black;
             cursor: pointer;
-            margin: 3vh 0;
+            width: 90%;
+            display: block;
+            margin: 0 auto;
         }
-        #resultBox{
+        .result{
+            display: none;
+            border: 1px solid black;
+            border-radius: 1vh;
+            width: 25vh;
+            padding: 1.5vh;
+        }
+        .result .img{
+            display: flex;
+            align-items: end;
+            margin: 0.5vh 0;
+        }
+        .result .img > div{
+            width: 5vh;
+            height: 5vh;
+            flex-shrink: 0;
+            border-radius: 1vh;
+            outline: 2px solid #81bfee;
+        }
+        .result img{
+            width: 4vh;
+            height: 5vh;
+            margin-right: 1vh;
+        }
+        .result .img span{
+            line-height: 4vh;
+            padding-left: 1vh;
+        }
+        .result .img span{
+            min-width: 7vh;
+        }
+        .resultBoxicon{
+            margin-top: 2vh;
+        }
+        .resultBox{
             color: red;
         }
-        #resultB{
-            color: green;
-        }
-        #resultC{
-            color: gray;
-        }
-        #resultGold{
+        .resultGold{
             color: rgb(224, 168, 0);
         }
-        .result, .result2{
-            display: none;
+        /* .resultBoxicon span{
+            color: white;
+            font-size: 1.5vh;
+            line-height: 1.5vh !important;
+            position: absolute;
+            width: 4vh;
+            text-align: right;
+            top: 0.5vh;
+            font-weight: 600;
+        } */
+        .flex{
+            display: flex;
+            margin-bottom: 10vh;
+        }
+        table, .result{
+            height: 35vh;
+            flex-direction: column;
+            justify-content: center;
+        }
+        table{
+            display: flex;
+        }
+        .bg1{
+            background-color: rgb(252 241 223);
         }
     </style>
 </head>
 <body>
     <div class="mode">
         <div class="img" onclick="modeChange(0)">
-            <div id="abidos">
+            <div class="abidos">
                 <div></div>
             </div>
         </div>
         <div class="img" onclick="modeChange(1)">
-            <div id="oreha">
+            <div class="oreha">
                 <div></div>
             </div>
         </div>
     </div>
     <div class="mode2">
         <div class="img" onclick="mode2Change(0)">
-            <div id="archeology">
+            <div class="archeology">
                 <div></div>
             </div>
         </div>
         <div class="img" onclick="mode2Change(1)">
-            <div id="hunting">
+            <div class="hunting">
                 <div></div>
             </div>
         </div>
         <div class="img" onclick="mode2Change(2)">
-            <div id="fishing">
+            <div class="fishing">
                 <div></div>
             </div>
         </div>
     </div>
-    <form id="calForm">
-        <table>
-            <tr>
-                <th>
-                    <div class="img">
-                        <div id="a">
-                            <div></div>
+    <div class="flex">
+        <form id="calForm">
+            <table class="bg1">
+                <tr>
+                    <th>
+                        <div class="img">
+                            <div class="a">
+                                <div></div>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td><input type="number" class="A" required></td>
-            </tr>
-            <tr>
-                <th>
-                    <div class="img">
-                        <div id="b">
-                            <div></div>
+                    </th>
+                    <td><input type="number" class="A" required></td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="img">
+                            <div class="b">
+                                <div></div>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td><input type="number" class="B" required></td>
-            </tr>
-            <tr>
-                <th>
-                    <div class="img">
-                        <div id="c">
-                            <div></div>
+                    </th>
+                    <td><input type="number" class="B" required></td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="img">
+                            <div class="c">
+                                <div></div>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td><input type="number" class="C" required></td>
-            </tr>
-            <tr>
-                <th>
-                    <div class="img">
-                        <div id="g">
-                            <div></div>
+                    </th>
+                    <td><input type="number" class="C" required></td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="img">
+                            <div class="g">
+                                <div></div>
+                            </div>
                         </div>
+                    </th>
+                    <td><input type="number" class="gold"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">변환</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="result bg1">
+            <div class="img">
+                <div class="b">
+                    <div></div>
+                </div>
+                <span class="resultB"></span>
+                <img src="./images/rArrow.png" />
+                <div class="powder">
+                    <div></div>
+                </div>
+            </div>
+            <div class="img">
+                <div class="c">
+                    <div></div>
+                </div>
+                <span class="resultC"></span>
+                <img src="./images/rArrow.png" />
+                <div class="powder">
+                    <div></div>
+                </div>
+            </div>
+            <div class="img">
+                <div class="powder">
+                    <div></div>
+                </div>
+                <span class="resultA"></span>
+                <img src="./images/rArrow.png" />
+                <div class="a">
+                    <div></div>
+                </div>
+            </div>
+            <div class="img">
+                <div class="resultBoxicon">
+                    <div>
                     </div>
-                </th>
-                <td><input type="number" class="gold"></td>
-            </tr>
-        </table>
-        <button type="submit">변환</button>
-    </form>
-
-    <p class="result">
-        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
-        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
-        고급 재료를 <span class="resultB" id="resultB"></span>회 교환하고 <br/>
-        일반 재료를 <span class="resultC" id="resultC"></span>회 교환하면 됩니다.
-    </p>
-    <p class="result2">
-        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
-        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
-        교환할 재료는 없습니다.
-    </p>
-
+                </div>
+                <span class="resultBox"></span>
+            </div>
+            <div class="img">
+                <div class="g">
+                    <div>
+                    </div>
+                </div>
+                <span class="resultGold"></span>
+            </div>
+        </div>
+    </div>
 
     <script>
         var mode = 0;
@@ -262,12 +370,12 @@
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_2_192.png',// 수렵 일반
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png', // 낚시 오레하
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_4_49.png', // 낚시 고급
-            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_1_142.png' // 낚시 일반
+            'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_1_142.png', // 낚시 일반
+            "https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png" // 융화제 상자
         ];
 
         function init(){
             document.querySelector('.result').style.display = 'none';
-            document.querySelector('.result2').style.display = 'none';
             document.querySelector('.A').value = '';
             document.querySelector('.B').value = '';
             document.querySelector('.C').value = '';
@@ -276,23 +384,31 @@
 
         function modeChange(m){
             init();
-
+            
             mode = m;
             if (mode){
+                document.querySelector('.mode').style.marginTop = '5vh';
                 document.querySelector('.mode2').style.display = 'flex';
+                document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #2e123c, #480d5d)';
             } else{
+                document.querySelector('.mode').style.marginTop = '10vh';
                 document.querySelector('.mode2').style.display = 'none';
+                document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #112739, #113d5d)';
                 mode2Change(0);
             }
-
+            
             const modeChild = document.querySelector('.mode').children;
             for (let i = 0; i < modeChild.length; i++) {
                 modeChild[i].children[0].style.outline = 'none';
             }
             modeChild[mode].children[0].style.outline = '3px solid #dd25ff';
+            
 
-            const a = document.querySelector('#a div');
-            a.style.backgroundImage  = `url(${bgUrl[mode]})`;
+            const as = document.querySelectorAll('.a');
+            as.forEach((a)=>{
+                a.querySelector("div").style.backgroundImage  = `url(${bgUrl[mode]})`;
+            })
+
         }
         function mode2Change(m){
             init();
@@ -304,28 +420,45 @@
             }
             modeChild[mode2].children[0].style.outline = '3px solid #dd25ff';
 
-            const a = document.querySelector('#a div');
-            const b = document.querySelector('#b div');
-            const c = document.querySelector('#c div');
+            const as = document.querySelectorAll('.a');
+            const bs = document.querySelectorAll('.b');
+            const cs = document.querySelectorAll('.c');
 
             if (mode2 === 0){
-                a.style.backgroundImage  = `url(${bgUrl[1]})`;
-                b.style.backgroundImage  = `url(${bgUrl[2]})`;
-                c.style.backgroundImage  = `url(${bgUrl[3]})`;
+                as.forEach((a)=>{
+                    a.querySelector("div").style.backgroundImage  = `url(${bgUrl[1]})`;
+                })
+                bs.forEach((b)=>{
+                    b.querySelector("div").style.backgroundImage  = `url(${bgUrl[2]})`;
+                })
+                cs.forEach((c)=>{
+                    c.querySelector("div").style.backgroundImage  = `url(${bgUrl[3]})`;
+                })
             } else if (mode2 === 1){
-                a.style.backgroundImage  = `url(${bgUrl[4]})`;
-                b.style.backgroundImage  = `url(${bgUrl[5]})`;
-                c.style.backgroundImage  = `url(${bgUrl[6]})`;
+                as.forEach((a)=>{
+                    a.querySelector("div").style.backgroundImage  = `url(${bgUrl[4]})`;
+                })
+                bs.forEach((b)=>{
+                    b.querySelector("div").style.backgroundImage  = `url(${bgUrl[5]})`;
+                })
+                cs.forEach((c)=>{
+                    c.querySelector("div").style.backgroundImage  = `url(${bgUrl[6]})`;
+                })
             } else {
-                a.style.backgroundImage  = `url(${bgUrl[7]})`;
-                b.style.backgroundImage  = `url(${bgUrl[8]})`;
-                c.style.backgroundImage  = `url(${bgUrl[9]})`;
+                as.forEach((a)=>{
+                    a.querySelector("div").style.backgroundImage  = `url(${bgUrl[7]})`;
+                })
+                bs.forEach((b)=>{
+                    b.querySelector("div").style.backgroundImage  = `url(${bgUrl[8]})`;
+                })
+                cs.forEach((c)=>{
+                    c.querySelector("div").style.backgroundImage  = `url(${bgUrl[9]})`;
+                })
             }
         }
 
         function cal(){
             document.querySelector('.result').style.display = 'none';
-            document.querySelector('.result2').style.display = 'none';
                 
             const a = document.querySelector('.A').valueAsNumber;
             const b = document.querySelector('.B').valueAsNumber;
@@ -363,10 +496,9 @@
             const resultGold = resultBox * gold;
             const aSmall = boxToA < resultBox;
             
-            var result;
-            var resultB, resultC;
+            
+            var resultB, resultC, resultA;
             if (aSmall) {
-                result = document.querySelector('.result');
                 const needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
                 
                 if (resultBox === boxToPowder){
@@ -380,19 +512,24 @@
                     resultB = Math.ceil(needPowder / 80);
                     resultC = 0;
                 }
+                resultA = Math.floor(((resultB+resultC) * 80)/100);
+                console.log(resultA);
+                console.log(resultB);
+                console.log(resultC);
             } else{
-                result = document.querySelector('.result2');
-            }
-            
-            result.querySelector('.resultBox').innerHTML = resultBox;
-            result.querySelector('.resultGold').innerHTML = resultGold + "G";
-
-            if (aSmall){
-                result.querySelector('.resultB').innerHTML = resultB;
-                result.querySelector('.resultC').innerHTML = resultC;
+                resultB = 0;
+                resultC = 0;
+                resultA = 0;
             }
 
-            result.style.display = 'block';
+            const result= document.querySelector('.result');;
+            result.querySelector('.resultA').innerHTML = "x"+resultA;
+            result.querySelector('.resultB').innerHTML = "x"+resultB;
+            result.querySelector('.resultC').innerHTML = "x"+resultC;
+            result.querySelector('.resultBox').innerHTML = "x"+resultBox + "회 제작";
+            result.querySelector('.resultGold').innerHTML = "x"+resultGold + "G 소모";
+
+            result.style.display = 'flex';
         }
         const form = document.getElementById('calForm');
 

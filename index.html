@@ -22,8 +22,8 @@
         }
         .mode{
             height: 10vh;
-            margin-top: 3vh;
-            margin-bottom: 3vh;
+            width: 25vh;
+            margin: 3vh auto;
             display: flex;
             justify-content: space-evenly;
         }
@@ -38,7 +38,8 @@
         }
         .mode2{
             height: 7vh;
-            margin: 0 0 3vh;
+            width: 25vh;
+            margin: 0 auto 3vh;
             display: none;
             justify-content: space-evenly;
         }
@@ -94,7 +95,6 @@
         form{
             display: flex;
             flex-direction: column;
-            margin-right: 2vh;
         }
         form .img > div{
             width: 5vh;
@@ -143,13 +143,22 @@
             border-radius: 1vh;
             padding: 1.5vh;
 	        border-spacing: 0 10px;
-            width: 25vh;
+            width: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            @media (max-aspect-ratio: 1)  {
+                margin-bottom: 3vh;
+            }
         }
         th{
             justify-content: center;
         }
+        td + th{
+            padding-left: 3.5vh;
+        }
         input{
-            width: 15.5vh;
+            width: 10vh;
             height: 4vh;
             margin-left: 1.5vh;
         }
@@ -158,7 +167,7 @@
             background-color: white;
             border: 1px solid black;
             cursor: pointer;
-            width: 90%;
+            width: 100%;
             display: block;
             margin: 0 auto;
         }
@@ -166,13 +175,18 @@
             display: none;
             border: 1px solid black;
             border-radius: 1vh;
-            width: 25vh;
-            padding: 1.5vh;
+            padding: 0.5vh 1.5vh;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 26.5vh;
+            @media (min-aspect-ratio: 1)  {
+                margin-left: 5vh;
+            }
         }
         .result .img{
             display: flex;
             align-items: end;
-            margin: 0.5vh 0;
+            margin: 1.5vh 0;
         }
         .result .img > div{
             width: 5vh;
@@ -191,10 +205,10 @@
             padding-left: 1vh;
         }
         .result .img span{
-            min-width: 7vh;
+            width: 100%;
         }
-        .resultBoxicon{
-            margin-top: 2vh;
+        .result > div:nth-child(2){
+            width: 100%;
         }
         .resultBox{
             color: red;
@@ -202,27 +216,12 @@
         .resultGold{
             color: rgb(224, 168, 0);
         }
-        /* .resultBoxicon span{
-            color: white;
-            font-size: 1.5vh;
-            line-height: 1.5vh !important;
-            position: absolute;
-            width: 4vh;
-            text-align: right;
-            top: 0.5vh;
-            font-weight: 600;
-        } */
         .flex{
             display: flex;
-            margin-bottom: 10vh;
-        }
-        table, .result{
-            height: 35vh;
-            flex-direction: column;
-            justify-content: center;
-        }
-        table{
-            display: flex;
+            align-items: center;
+            @media (max-aspect-ratio: 1)  {
+                flex-direction: column;
+            }
         }
         .bg1{
             background-color: rgb(252 241 223);
@@ -230,129 +229,131 @@
     </style>
 </head>
 <body>
-    <div class="mode">
-        <div class="img" onclick="modeChange(0)">
-            <div class="abidos">
-                <div></div>
-            </div>
-        </div>
-        <div class="img" onclick="modeChange(1)">
-            <div class="oreha">
-                <div></div>
-            </div>
-        </div>
-    </div>
-    <div class="mode2">
-        <div class="img" onclick="mode2Change(0)">
-            <div class="archeology">
-                <div></div>
-            </div>
-        </div>
-        <div class="img" onclick="mode2Change(1)">
-            <div class="hunting">
-                <div></div>
-            </div>
-        </div>
-        <div class="img" onclick="mode2Change(2)">
-            <div class="fishing">
-                <div></div>
-            </div>
-        </div>
-    </div>
     <div class="flex">
-        <form id="calForm">
-            <table class="bg1">
-                <tr>
-                    <th>
-                        <div class="img">
-                            <div class="a">
-                                <div></div>
+        <div>
+            <div class="mode">
+                <div class="img" onclick="modeChange(0)">
+                    <div class="abidos">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="img" onclick="modeChange(1)">
+                    <div class="oreha">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mode2">
+                <div class="img" onclick="mode2Change(0)">
+                    <div class="archeology">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="img" onclick="mode2Change(1)">
+                    <div class="hunting">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="img" onclick="mode2Change(2)">
+                    <div class="fishing">
+                        <div></div>
+                    </div>
+                </div>
+            </div>   
+            <form id="calForm">
+                <table class="bg1">
+                    <tr>
+                        <th>
+                            <div class="img">
+                                <div class="a">
+                                    <div></div>
+                                </div>
                             </div>
-                        </div>
-                    </th>
-                    <td><input type="number" class="A" required></td>
-                </tr>
-                <tr>
-                    <th>
-                        <div class="img">
-                            <div class="b">
-                                <div></div>
+                        </th>
+                        <td><input type="number" class="A" required></td>
+                        <th>
+                            <div class="img">
+                                <div class="b">
+                                    <div></div>
+                                </div>
                             </div>
-                        </div>
-                    </th>
-                    <td><input type="number" class="B" required></td>
-                </tr>
-                <tr>
-                    <th>
-                        <div class="img">
-                            <div class="c">
-                                <div></div>
+                        </th>
+                        <td><input type="number" class="B" required></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="img">
+                                <div class="c">
+                                    <div></div>
+                                </div>
                             </div>
-                        </div>
-                    </th>
-                    <td><input type="number" class="C" required></td>
-                </tr>
-                <tr>
-                    <th>
-                        <div class="img">
-                            <div class="g">
-                                <div></div>
+                        </th>
+                        <td><input type="number" class="C" required></td>
+                        <th>
+                            <div class="img">
+                                <div class="g">
+                                    <div></div>
+                                </div>
                             </div>
-                        </div>
-                    </th>
-                    <td><input type="number" class="gold"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button type="submit">변환</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+                        </th>
+                        <td><input type="number" class="gold"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <button type="submit">변환</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
         <div class="result bg1">
-            <div class="img">
-                <div class="b">
-                    <div></div>
-                </div>
-                <span class="resultB"></span>
-                <img src="./images/rArrow.png" />
-                <div class="powder">
-                    <div></div>
-                </div>
-            </div>
-            <div class="img">
-                <div class="c">
-                    <div></div>
-                </div>
-                <span class="resultC"></span>
-                <img src="./images/rArrow.png" />
-                <div class="powder">
-                    <div></div>
-                </div>
-            </div>
-            <div class="img">
-                <div class="powder">
-                    <div></div>
-                </div>
-                <span class="resultA"></span>
-                <img src="./images/rArrow.png" />
-                <div class="a">
-                    <div></div>
-                </div>
-            </div>
-            <div class="img">
-                <div class="resultBoxicon">
-                    <div>
+            <div>
+                <div class="img">
+                    <div class="b">
+                        <div></div>
+                    </div>
+                    <span class="resultB"></span>
+                    <img src="./images/rArrow.png" />
+                    <div class="powder">
+                        <div></div>
                     </div>
                 </div>
-                <span class="resultBox"></span>
-            </div>
-            <div class="img">
-                <div class="g">
-                    <div>
+                <div class="img">
+                    <div class="c">
+                        <div></div>
+                    </div>
+                    <span class="resultC"></span>
+                    <img src="./images/rArrow.png" />
+                    <div class="powder">
+                        <div></div>
                     </div>
                 </div>
-                <span class="resultGold"></span>
+                <div class="img">
+                    <div class="powder">
+                        <div></div>
+                    </div>
+                    <span class="resultA"></span>
+                    <img src="./images/rArrow.png" />
+                    <div class="a">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="img">
+                    <div class="resultBoxicon">
+                        <div>
+                        </div>
+                    </div>
+                    <span class="resultBox"></span>
+                </div>
+                <div class="img">
+                    <div class="g">
+                        <div>
+                        </div>
+                    </div>
+                    <span class="resultGold"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -387,11 +388,9 @@
             
             mode = m;
             if (mode){
-                document.querySelector('.mode').style.marginTop = '5vh';
                 document.querySelector('.mode2').style.display = 'flex';
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #2e123c, #480d5d)';
             } else{
-                document.querySelector('.mode').style.marginTop = '10vh';
                 document.querySelector('.mode2').style.display = 'none';
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #112739, #113d5d)';
                 mode2Change(0);
@@ -526,8 +525,8 @@
             result.querySelector('.resultA').innerHTML = "x"+resultA;
             result.querySelector('.resultB').innerHTML = "x"+resultB;
             result.querySelector('.resultC').innerHTML = "x"+resultC;
-            result.querySelector('.resultBox').innerHTML = "x"+resultBox + "회 제작";
-            result.querySelector('.resultGold').innerHTML = "x"+resultGold + "G 소모";
+            result.querySelector('.resultBox').innerHTML = "x"+resultBox;
+            result.querySelector('.resultGold').innerHTML = "x"+resultGold + "G";
 
             result.style.display = 'flex';
         }

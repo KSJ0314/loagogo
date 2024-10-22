@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./loagogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="./images/abidos.png" />
     <title>LostArk 생활의 가루 계산기</title>
     <style>
         *{
@@ -13,18 +12,16 @@
             box-sizing: border-box;
         }
         body{
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             overflow: hidden;
-            background-color: lightblue;
         }
         .mode{
             height: 10vh;
-            width: 25vh;
-            margin: 0 auto 3vh;
+            margin-top: 10vh;
+            margin-bottom: 3vh;
             display: flex;
             justify-content: space-evenly;
         }
@@ -39,8 +36,7 @@
         }
         .mode2{
             height: 7vh;
-            width: 25vh;
-            margin: 0 auto 3vh;
+            margin: 0 0 3vh;
             display: none;
             justify-content: space-evenly;
         }
@@ -130,7 +126,7 @@
             background: linear-gradient(135deg, #112739, #113d5d);
         }
         .img .resultBoxicon div{
-            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png);
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_86.png);
         }
         .img .powder{
             background: linear-gradient(135deg, #232323, #575757);
@@ -141,223 +137,171 @@
         
         table{
             border: 1px solid black;
-            border-radius: 1vh;
-            padding: 1.5vh;
+            padding: 5px;
 	        border-spacing: 0 10px;
-            width: 40vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            @media (max-aspect-ratio: 1)  {
-                margin-bottom: 3vh;
-            }
         }
         th{
+            padding: 5px 10px;
             justify-content: center;
         }
-        td + th{
-            padding-left: 3.5vh;
-        }
         input{
-            width: 10vh;
-            height: 4vh;
-            margin-left: 1.5vh;
+            width: 100px;
+            height: 25px;
         }
         button{
             padding: 5px 10px;
             background-color: white;
             border: 1px solid black;
+            border-top: none;
             cursor: pointer;
-            width: 100%;
-            display: block;
-            margin: 0 auto;
+            margin-bottom: 3vh;
         }
-        .result{
+        /* .result{
             display: none;
-            border: 1px solid black;
-            border-radius: 1vh;
-            padding: 0.5vh 1.5vh;
-            flex-direction: column;
-            justify-content: space-evenly;
-            width: 26.5vh;
-            @media (min-aspect-ratio: 1)  {
-                margin-left: 5vh;
-            }
-        }
+        } */
         .result .img{
+            width: 20vh;
             display: flex;
-            align-items: end;
-            margin: 1.5vh 0;
+            justify-content: space-between;
+            margin: 1vh 0;
         }
         .result .img > div{
             width: 5vh;
             height: 5vh;
-            flex-shrink: 0;
             border-radius: 1vh;
             outline: 2px solid #81bfee;
-        }
-        .result img{
-            width: 4vh;
-            height: 5vh;
-            margin-right: 1vh;
-        }
-        .result .img span{
-            line-height: 4vh;
-            padding-left: 1vh;
-        }
-        .result .img span{
-            width: 100%;
-        }
-        .result > div:nth-child(2){
-            width: 100%;
-        }
-        .resultBox{
-            color: red;
-        }
-        .resultGold{
-            color: rgb(224, 168, 0);
-        }
-        .flex{
-            display: flex;
-            align-items: center;
-            @media (max-aspect-ratio: 1)  {
-                flex-direction: column;
-            }
-        }
-        .bg1{
-            background-color: rgb(252 241 223);
         }
     </style>
 </head>
 <body>
-    <div class="flex">
-        <div>
-            <div class="mode">
-                <div class="img" onclick="modeChange(0)">
-                    <div class="abidos">
-                        <div></div>
-                    </div>
-                </div>
-                <div class="img" onclick="modeChange(1)">
-                    <div class="oreha">
-                        <div></div>
-                    </div>
-                </div>
+    <div class="mode">
+        <div class="img" onclick="modeChange(0)">
+            <div class="abidos">
+                <div></div>
             </div>
-            <div class="mode2">
-                <div class="img" onclick="mode2Change(0)">
-                    <div class="archeology">
-                        <div></div>
-                    </div>
-                </div>
-                <div class="img" onclick="mode2Change(1)">
-                    <div class="hunting">
-                        <div></div>
-                    </div>
-                </div>
-                <div class="img" onclick="mode2Change(2)">
-                    <div class="fishing">
-                        <div></div>
-                    </div>
-                </div>
-            </div>   
-            <form id="calForm">
-                <table class="bg1">
-                    <tr>
-                        <th>
-                            <div class="img">
-                                <div class="a">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </th>
-                        <td><input type="number" class="A" required></td>
-                        <th>
-                            <div class="img">
-                                <div class="b">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </th>
-                        <td><input type="number" class="B" required></td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <div class="img">
-                                <div class="c">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </th>
-                        <td><input type="number" class="C" required></td>
-                        <th>
-                            <div class="img">
-                                <div class="g">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </th>
-                        <td><input type="number" class="gold"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <button type="submit">변환</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
         </div>
-        <div class="result bg1">
-            <div>
-                <div class="img">
-                    <div class="b">
-                        <div></div>
-                    </div>
-                    <span class="resultB"></span>
-                    <img src="./images/rArrow.png" />
-                    <div class="powder">
-                        <div></div>
-                    </div>
-                </div>
-                <div class="img">
-                    <div class="c">
-                        <div></div>
-                    </div>
-                    <span class="resultC"></span>
-                    <img src="./images/rArrow.png" />
-                    <div class="powder">
-                        <div></div>
-                    </div>
-                </div>
-                <div class="img">
-                    <div class="powder">
-                        <div></div>
-                    </div>
-                    <span class="resultA"></span>
-                    <img src="./images/rArrow.png" />
-                    <div class="a">
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="img">
-                    <div class="resultBoxicon">
-                        <div>
-                        </div>
-                    </div>
-                    <span class="resultBox"></span>
-                </div>
-                <div class="img">
-                    <div class="g">
-                        <div>
-                        </div>
-                    </div>
-                    <span class="resultGold"></span>
-                </div>
+        <div class="img" onclick="modeChange(1)">
+            <div class="oreha">
+                <div></div>
             </div>
         </div>
     </div>
+    <div class="mode2">
+        <div class="img" onclick="mode2Change(0)">
+            <div class="archeology">
+                <div></div>
+            </div>
+        </div>
+        <div class="img" onclick="mode2Change(1)">
+            <div class="hunting">
+                <div></div>
+            </div>
+        </div>
+        <div class="img" onclick="mode2Change(2)">
+            <div class="fishing">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <form id="calForm">
+        <table>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div class="a">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="A" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div class="b">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="B" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div class="c">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="C" required></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="img">
+                        <div class="g">
+                            <div></div>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" class="gold"></td>
+            </tr>
+        </table>
+        <button type="submit">변환</button>
+    </form>
+
+    <!-- <p class="result">
+        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
+        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
+        고급 재료를 <span class="resultB" id="resultB"></span>회 교환하고 <br/>
+        일반 재료를 <span class="resultC" id="resultC"></span>회 교환하면 됩니다.
+    </p>
+    <p class="result2">
+        총 <span class="resultBox" id="resultBox"></span>개 제작 가능하며 <br/>
+        제작비로 <span class="resultGold" id="resultGold"></span>가 필요하고 <br/>
+        교환할 재료는 없습니다.
+    </p> -->
+    <div class="result">
+        <div class="img">
+            <div class="b">
+                <div></div>
+            </div>
+            <span class="resultB"></span>
+            <div class="powder">
+                <div></div>
+            </div>
+        </div>
+        <div class="img">
+            <div class="c">
+                <div></div>
+            </div>
+            <span class="resultC"></span>
+            <div class="powder">
+                <div></div>
+            </div>
+        </div>
+        <div class="img">
+            <div class="powder">
+                <div></div>
+            </div>
+            <span class="resultA"></span>
+            <div class="a">
+                <div></div>
+            </div>
+        </div>
+        <div class="img">
+            <div class="resultBoxicon">
+                <div></div>
+            </div>
+            <span class="resultBox"></span>
+        </div>
+        <div class="img">
+            <div class="g">
+                <div></div>
+            </div>
+            <span class="resultGold"></span>
+        </div>
+    </div>
+
 
     <script>
         var mode = 0;
@@ -373,11 +317,12 @@
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png', // 낚시 오레하
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_4_49.png', // 낚시 고급
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_1_142.png', // 낚시 일반
-            "https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png" // 융화제 상자
+            "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_86.png", // 아비도스
+            "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_11_29.png"  // 오레하
         ];
 
         function init(){
-            document.querySelector('.result').style.display = 'none';
+            //document.querySelector('.result').style.display = 'none';
             document.querySelector('.A').value = '';
             document.querySelector('.B').value = '';
             document.querySelector('.C').value = '';
@@ -389,10 +334,14 @@
             
             mode = m;
             if (mode){
+                document.querySelector('.mode').style.marginTop = '5vh';
                 document.querySelector('.mode2').style.display = 'flex';
+                document.querySelector('.resultBoxicon div').style.backgroundImage  = `url(${bgUrl[11]})`;
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #2e123c, #480d5d)';
             } else{
+                document.querySelector('.mode').style.marginTop = '10vh';
                 document.querySelector('.mode2').style.display = 'none';
+                document.querySelector('.resultBoxicon div').style.backgroundImage  = `url(${bgUrl[10]})`;
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #112739, #113d5d)';
                 mode2Change(0);
             }
@@ -523,13 +472,13 @@
             }
 
             const result= document.querySelector('.result');;
-            result.querySelector('.resultA').innerHTML = "x"+resultA;
-            result.querySelector('.resultB').innerHTML = "x"+resultB;
-            result.querySelector('.resultC').innerHTML = "x"+resultC;
-            result.querySelector('.resultBox').innerHTML = "x"+resultBox;
-            result.querySelector('.resultGold').innerHTML = "x"+resultGold + "G";
+            result.querySelector('.resultA').innerHTML = resultA;
+            result.querySelector('.resultB').innerHTML = resultB;
+            result.querySelector('.resultC').innerHTML = resultC;
+            result.querySelector('.resultBox').innerHTML = resultBox;
+            result.querySelector('.resultGold').innerHTML = resultGold + "G";
 
-            result.style.display = 'flex';
+            result.style.display = 'block';
         }
         const form = document.getElementById('calForm');
 

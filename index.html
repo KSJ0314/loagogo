@@ -534,7 +534,7 @@
                 resultB = 0;
                 resultC = 0;
             }
-            resultA = Math.ceil((resultBox*33 - aInput)/10);
+            resultA = Math.max(Math.ceil((resultBox*33 - aInput)/10), 0);
 
             const result= document.querySelector('.result');;
             result.querySelector('.resultA').innerHTML = "x"+resultA;

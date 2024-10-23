@@ -509,11 +509,13 @@
             
             var resultB, resultC, resultA;
             if (aSmall) {
-                const needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
+                var needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
                 
                 if (resultBox === boxToPowder){
                     resultB = Math.floor((b - resultBox*bMaterial) / 50);
                     resultC = Math.floor((c - resultBox*cMaterial) / 100);
+                    resultBox = Math.min(Math.floor((Math.floor(((resultB+resultC)*80)/100)*10 + a) / 33), resultBox);
+                    needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
                     const spareChange = (resultB + resultC) - Math.ceil(needPowder / 80);
                     if (spareChange >= 1){
                         if (resultB > resultC){
@@ -522,7 +524,6 @@
                             resultC -= spareChange;
                         }
                     }
-                    resultBox = Math.min(Math.floor((Math.floor(((resultB+resultC)*80)/100)*10 + a) / 33), resultBox);
                 } else if (resultBox === boxToB){
                     resultB = 0;
                     resultC = Math.ceil(needPowder / 80);

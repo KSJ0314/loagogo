@@ -155,7 +155,8 @@
         th{
             justify-content: center;
         }
-        td + th{
+        td + th,
+        td + td{
             padding-left: 3.5vh;
         }
         input{
@@ -292,15 +293,23 @@
                         <td><input type="number" class="C" required></td>
                         <th>
                             <div class="img">
+                                <div class="powder">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </th>
+                        <td><input type="number" class="powderInput"></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="img">
                                 <div class="g">
                                     <div></div>
                                 </div>
                             </div>
                         </th>
                         <td><input type="number" class="gold"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
+                        <td colspan="2">
                             <button type="submit">변환</button>
                         </td>
                     </tr>
@@ -382,6 +391,7 @@
             document.querySelector('.B').value = '';
             document.querySelector('.C').value = '';
             document.querySelector('.gold').value = '';
+            document.querySelector('.powderInput').value = '';
         }
 
         function modeChange(m){
@@ -459,15 +469,16 @@
 
         function cal(){
             document.querySelector('.result').style.display = 'none';
-                
-            const a = document.querySelector('.A').valueAsNumber;
+            
+            const aInput = document.querySelector('.A').valueAsNumber;
             const b = document.querySelector('.B').valueAsNumber;
             const c = document.querySelector('.C').valueAsNumber;
+            var powderInput = document.querySelector('.powderInput').valueAsNumber;
             const gold = document.querySelector('.gold').value;
-
-            if (!a || !b || !c){
-                return;
+            if (!powderInput){
+                powderInput = 0;
             }
+            a = aInput + Math.floor(powderInput/100)*10;
 
             var aMaterial;
             var bMaterial;
@@ -496,7 +507,6 @@
             const resultGold = resultBox * gold;
             const aSmall = boxToA < resultBox;
             
-            
             var resultB, resultC, resultA;
             if (aSmall) {
                 const needPowder = Math.ceil((resultBox*aMaterial - a)/10)*100;
@@ -504,6 +514,14 @@
                 if (resultBox === boxToPowder){
                     resultB = Math.floor((b - resultBox*bMaterial) / 50);
                     resultC = Math.floor((c - resultBox*cMaterial) / 100);
+                    const spareChange = (resultB + resultC) - Math.ceil(needPowder / 80);
+                    if (spareChange >= 1){
+                        if (resultB > resultC){
+                            resultB -= spareChange;
+                        } else {
+                            resultC -= spareChange;
+                        }
+                    }
                     resultBox = Math.min(Math.floor((Math.floor(((resultB+resultC)*80)/100)*10 + a) / 33), resultBox);
                 } else if (resultBox === boxToB){
                     resultB = 0;
@@ -512,15 +530,11 @@
                     resultB = Math.ceil(needPowder / 80);
                     resultC = 0;
                 }
-                resultA = Math.floor(((resultB+resultC) * 80)/100);
-                console.log(resultA);
-                console.log(resultB);
-                console.log(resultC);
             } else{
                 resultB = 0;
                 resultC = 0;
-                resultA = 0;
             }
+            resultA = Math.ceil((resultBox*33 - aInput)/10);
 
             const result= document.querySelector('.result');;
             result.querySelector('.resultA').innerHTML = "x"+resultA;

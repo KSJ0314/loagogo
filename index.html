@@ -504,7 +504,6 @@
             const boxToB = Math.floor(b / bMaterial);
             const boxToC = Math.floor(c / cMaterial);
             var resultBox = Math.min(boxToPowder, boxToB, boxToC);
-            const resultGold = resultBox * gold;
             const aSmall = boxToA < resultBox;
             
             var resultB, resultC, resultA;
@@ -536,6 +535,7 @@
                 resultC = 0;
             }
             resultA = Math.max(Math.ceil((resultBox*aMaterial - aInput)/10), 0);
+            const resultGold = resultBox * gold;
 
             const result= document.querySelector('.result');;
             result.querySelector('.resultA').innerHTML = "x"+resultA;

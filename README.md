@@ -1,5 +1,5 @@
 # loagogo
-![ksj0314 github io_loagogo_](https://github.com/user-attachments/assets/0c249eae-0558-49d8-9211-8e7b82924484)
+![ksj0314 github io_loagogo_](https://github.com/user-attachments/assets/3db290cc-b73d-4631-84ab-f6e9fd3a13fb)
 
 ## 업데이트 내역
 * 2024-10-20 : 최초 배포

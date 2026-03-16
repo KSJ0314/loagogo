@@ -23,7 +23,7 @@
         }
         .mode{
             height: 10vh;
-            width: 25vh;
+            width: 37.5vh;
             margin: 0 auto 3vh;
             display: flex;
             justify-content: space-evenly;
@@ -64,7 +64,6 @@
         }
         .abidos{
             background: linear-gradient(135deg, #112739, #113d5d);
-            outline: 3px solid #dd25ff;
         }
         .abidos div{
             width: 100% !important;
@@ -76,6 +75,15 @@
         }
         .oreha div{
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_11_29.png);
+        }
+        .sabidos{
+            background: linear-gradient(135deg, #112739, #113d5d);
+            outline: 3px solid #dd25ff;
+        }
+        .sabidos div{
+            width: 100% !important;
+            height: 100% !important;
+            background-image: url(https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_252.png);
         }
         .mode2 .img > div{
             background: linear-gradient(135deg, #112739, #113d5d);
@@ -235,11 +243,16 @@
         <div>
             <div class="mode">
                 <div class="img" onclick="modeChange(0)">
-                    <div class="abidos">
+                    <div class="sabidos">
                         <div></div>
                     </div>
                 </div>
                 <div class="img" onclick="modeChange(1)">
+                    <div class="abidos">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="img" onclick="modeChange(2)">
                     <div class="oreha">
                         <div></div>
                     </div>
@@ -382,7 +395,8 @@
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_74.png', // 낚시 오레하
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_4_49.png', // 낚시 고급
             'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_1_142.png', // 낚시 일반
-            "https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png" // 융화제 상자
+            "https://cdn-lostark.game.onstove.com/efui_iconatlas/shop_icon/shop_icon_31.png", // 융화제 상자
+            "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_252.png" // 상급 아비도스
         ];
 
         function init(){
@@ -396,29 +410,34 @@
 
         function modeChange(m){
             init();
-            
+
             mode = m;
-            if (mode){
+            if (mode === 2){
                 document.querySelector('.mode2').style.display = 'flex';
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #2e123c, #480d5d)';
+                mode2Change(0);
             } else{
                 document.querySelector('.mode2').style.display = 'none';
                 document.querySelector('.resultBoxicon').style.background  = 'linear-gradient(135deg, #112739, #113d5d)';
-                mode2Change(0);
+                const as = document.querySelectorAll('.a');
+                as.forEach((a)=>{
+                    a.querySelector("div").style.backgroundImage  = `url(${bgUrl[0]})`;
+                });
+                const bs = document.querySelectorAll('.b');
+                bs.forEach((b)=>{
+                    b.querySelector("div").style.backgroundImage  = `url(${bgUrl[2]})`;
+                });
+                const cs = document.querySelectorAll('.c');
+                cs.forEach((c)=>{
+                    c.querySelector("div").style.backgroundImage  = `url(${bgUrl[3]})`;
+                });
             }
-            
+
             const modeChild = document.querySelector('.mode').children;
             for (let i = 0; i < modeChild.length; i++) {
                 modeChild[i].children[0].style.outline = 'none';
             }
             modeChild[mode].children[0].style.outline = '3px solid #dd25ff';
-            
-
-            const as = document.querySelectorAll('.a');
-            as.forEach((a)=>{
-                a.querySelector("div").style.backgroundImage  = `url(${bgUrl[mode]})`;
-            })
-
         }
         function mode2Change(m){
             init();
@@ -484,6 +503,10 @@
             var bMaterial;
             var cMaterial;
             if (mode === 0){
+                aMaterial = 43;
+                bMaterial = 59;
+                cMaterial = 112;
+            } else if (mode === 1){
                 aMaterial = 33;
                 bMaterial = 45;
                 cMaterial = 86;

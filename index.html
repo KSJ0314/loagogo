@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./loagogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="./images/abidos.png" />
-    <title>LostArk 생활의 가루 계산기</title>
+    <title>로아고고 - 로스트아크 생활의 가루 계산기</title>
+    <meta name="description" content="로아고고 - 로스트아크 생활의 가루 계산기. 아비도스, 오레하 융화제 제작에 필요한 생활의 가루 교환을 빠르게 계산하세요.">
+    <meta name="keywords" content="로아고고, 로아, 로아 고고, 로스트아크, 생활의 가루, 융화제, 계산기, 아비도스, 오레하">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="로아고고 - 로스트아크 생활의 가루 계산기">
+    <meta property="og:description" content="로스트아크 생활의 가루 계산기. 아비도스, 오레하 융화제 제작에 필요한 생활의 가루 교환을 빠르게 계산하세요.">
+    <meta property="og:image" content="https://ksj0314.github.io/loagogo/images/abidos.png" />
     <style>
         *{
             margin: 0;
@@ -77,7 +82,7 @@
             background-image: url(https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_11_29.png);
         }
         .sabidos{
-            background: linear-gradient(135deg, #112739, #113d5d);
+            background: linear-gradient(135deg, #2e123c, #480d5d);
             outline: 3px solid #dd25ff;
         }
         .sabidos div{
@@ -236,6 +241,84 @@
         .bg1{
             background-color: rgb(252 241 223);
         }
+        .mokoko-wrap{
+            position: fixed;
+            bottom: 0;
+            right: 2vw;
+            width: 20vh;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 1vh;
+        }
+        .mokoko-wrap img{
+            width: 10vh;
+            height: 10vh;
+            margin-bottom: 0.5vh;
+        }
+        .visitor-count{
+            font-size: 1.2vh;
+            color: #444;
+            text-align: center;
+            line-height: 1.6vh;
+        }
+        .mokoko-bubble{
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #bbb;
+            border-radius: 1vh;
+            padding: 1.2vh 1.5vh 3.5vh;
+            font-size: 1.5vh;
+            line-height: 2.3vh;
+            white-space: nowrap;
+            display: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .mokoko-bubble::before,
+        .mokoko-bubble::after{
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: calc(9vh - 7px);
+            border-style: solid;
+            border-color: transparent;
+        }
+        .mokoko-bubble::before{
+            border-width: 8px 7px 0;
+            border-top-color: #bbb;
+        }
+        .mokoko-bubble::after{
+            border-width: 7px 6px 0;
+            border-top-color: white;
+            right: calc(9vh - 6px);
+            margin-top: -1px;
+        }
+        .copy-btn{
+            position: absolute;
+            bottom: 0.8vh;
+            right: 0.8vh;
+            width: 2.2vh;
+            height: 2.2vh;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .copy-btn:hover{
+            color: #222;
+        }
+        .copy-btn svg{
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -378,6 +461,25 @@
                     <span class="resultGold"></span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="mokoko-wrap" id="mokokoWrap">
+        <img src="./images/mokoko.png" />
+        <div class="visitor-count">
+            today: <span id="todayCount">-</span><br>
+            total: <span id="totalCount">-</span>
+        </div>
+        <div class="mokoko-bubble" id="mokokoBubble">
+            문의 사항은 "sojung017@gmail.com" 혹은<br>
+            실리안 서버의 "동글이펀치"에게 우편 바랍니다.<br>
+            💚 골드 후원은 언제나 대환영 💚
+            <button class="copy-btn" onclick="copyNick()" title="동글이펀치 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="2" width="10" height="13" rx="2"></rect>
+                    <path d="M5 6H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -575,6 +677,83 @@
             event.preventDefault();
             cal();
         });
+
+        const mokokoWrap = document.getElementById('mokokoWrap');
+        const mokokoBubble = document.getElementById('mokokoBubble');
+        let hideTimer = null;
+
+        function showBubble() {
+            clearTimeout(hideTimer);
+            mokokoBubble.style.display = 'block';
+        }
+        function hideBubble() {
+            hideTimer = setTimeout(() => { mokokoBubble.style.display = 'none'; }, 100);
+        }
+
+        mokokoWrap.addEventListener('mouseenter', showBubble);
+        mokokoWrap.addEventListener('mouseleave', hideBubble);
+        mokokoBubble.addEventListener('mouseenter', showBubble);
+        mokokoBubble.addEventListener('mouseleave', hideBubble);
+
+        function copyNick() {
+            navigator.clipboard.writeText('동글이펀치').then(() => {
+                alert('닉네임 복사 완료');
+            });
+        }
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxCa5vzAgLkzL06KukH9iqnL3X-QZLNOI",
+            authDomain: "myportfolio-a7062.firebaseapp.com",
+            projectId: "myportfolio-a7062",
+            storageBucket: "myportfolio-a7062.appspot.com",
+            messagingSenderId: "866493693267",
+            appId: "1:866493693267:web:7e576c9d6804da4289b5a6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const today = new Date().toISOString().slice(0, 10);
+        const isNewVisitor = localStorage.getItem('visitedToday') !== today;
+        const docRef = doc(db, 'visitorStats', 'loagogoCounts');
+
+        try {
+            await runTransaction(db, async (transaction) => {
+                const docSnap = await transaction.get(docRef);
+                const data = docSnap.data();
+
+                const isNewDay = data.lastVisited !== today;
+                let newToday = isNewDay ? 0 : data.todayVisitors;
+                let newTotal = data.totalVisitors;
+
+                if (isNewVisitor) {
+                    newToday += 1;
+                    newTotal += 1;
+                }
+
+                transaction.update(docRef, {
+                    lastVisited: today,
+                    todayVisitors: newToday,
+                    totalVisitors: newTotal
+                });
+            });
+
+            if (isNewVisitor) {
+                localStorage.setItem('visitedToday', today);
+            }
+
+            const snap = await getDoc(docRef);
+            const data = snap.data();
+            document.getElementById('todayCount').textContent = data.todayVisitors;
+            document.getElementById('totalCount').textContent = data.totalVisitors;
+
+        } catch (e) {
+            console.error('방문자 수 오류:', e);
+        }
     </script>
 </body>
 </html>

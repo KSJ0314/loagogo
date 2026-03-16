@@ -261,8 +261,12 @@
         .visitor-count{
             font-size: 1.2vh;
             color: #444;
-            text-align: center;
             line-height: 1.6vh;
+            width: 6vh;
+        }
+        .visitor-count > div{
+            display: flex;
+            justify-content: space-between;
         }
         .mokoko-bubble{
             position: absolute;
@@ -467,8 +471,8 @@
     <div class="mokoko-wrap" id="mokokoWrap">
         <img src="./images/mokoko.png" />
         <div class="visitor-count">
-            today: <span id="todayCount">-</span><br>
-            total: <span id="totalCount">-</span>
+            <div><span>today</span><span id="todayCount">-</span></div>
+            <div><span>total</span><span id="totalCount">-</span></div>
         </div>
         <div class="mokoko-bubble" id="mokokoBubble">
             문의 사항은 "sojung017@gmail.com" 혹은<br>

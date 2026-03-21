@@ -479,8 +479,8 @@
     <div class="mokoko-wrap" id="mokokoWrap">
         <img src="./images/mokoko.png" />
         <div class="visitor-count">
-            <div><span>today</span><span id="todayCount">-</span></div>
-            <div><span>total</span><span id="totalCount">-</span></div>
+            <!-- <div><span>today</span><span id="todayCount">-</span></div>
+            <div><span>total</span><span id="totalCount">-</span></div> -->
         </div>
         <div class="mokoko-bubble" id="mokokoBubble">
             문의 사항은 "sojung017@gmail.com" 혹은<br>
@@ -760,8 +760,8 @@
 
             const snap = await getDoc(docRef);
             const data = snap.data();
-            document.getElementById('todayCount').textContent = data.todayVisitors;
-            document.getElementById('totalCount').textContent = data.totalVisitors;
+            // document.getElementById('todayCount').textContent = data.todayVisitors;
+            // document.getElementById('totalCount').textContent = data.totalVisitors;
 
         } catch (e) {
             console.error('방문자 수 오류:', e);
